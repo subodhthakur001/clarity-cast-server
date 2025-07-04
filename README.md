@@ -1,47 +1,57 @@
-# ClarityCast Client 🎥
+# ClarityCast Server (Spring Boot) 🌐
 
-**ClarityCast** is the frontend application for a modern, production-ready video recording and communication platform — inspired by tools like **Riverside.fm**. Unlike basic WebRTC peer-to-peer examples, ClarityCast is built to support high-quality video streaming with a scalable signaling and recording pipeline.
+The **ClarityCast Server** is a scalable, WebSocket-based signaling backend built with **Spring Boot** for managing peer connections in a modern, high-quality video communication platform — similar to **Riverside.fm**.
 
-
----
-
-## 🎯 Project Goal
-
-To build a fully featured, Riverside.fm-style platform enabling:
-- Studio-quality video/audio recording
-- Multi-user remote collaboration
-- Cloud-based file storage
-- Scalable architecture for production use
+Unlike basic peer-to-peer WebRTC demos, this server is designed for **production**, with a modular architecture to support **multi-user rooms**, **recording orchestration**, **session persistence**, and eventually **media pipeline integration**.
 
 ---
 
-## 🔍 Features
+## 🎯 Project Vision
 
-- 🚀 Sender and Receiver roles via URL routes
-- 🔄 WebSocket-based signaling
-- 📡 WebRTC-based real-time video transmission
-- ✅ Stream display via React refs
-- 💎 Responsive layout with centered video playback
+To build a Riverside.fm-style remote studio system with:
+
+- 🎥 Studio-quality audio/video recording
+- 🧠 Session-aware WebRTC signaling
+- 🔒 Secure, authenticated communication
+- 📂 Cloud-based media asset management
+- 🔁 Post-processing and export support
+
+---
+
+## 🚀 Current Features
+
+- ✅ WebSocket server for WebRTC signaling
+- ✅ Role assignment (`sender`, `receiver`)
+- ✅ Routing of SDP (offer/answer) and ICE candidates
+- ✅ Configurable WebSocket endpoints
+- ✅ Modular Spring Boot project structure
 
 ---
 
 ## 🧱 Tech Stack
 
-- React (with Hooks)
-- WebRTC
-- WebSocket
-- JavaScript (ES6+)
-- HTML5 Video API
+- Java 17+  
+- Spring Boot 3.x  
+- Spring WebSocket  
+- STOMP (optional for future features)  
+- Jackson for JSON serialization
 
 ---
 
-## 📁 Project Structure
+## 🗂️ Project Structure (as of now)
 
 ```bash
-clarity-cast-client/
-├── src/components
-│   ├── Sender.jsx         # Capture and stream video
-│   ├── Receiver.jsx       # Receive and render stream
-│   └── App.jsx
-├── public/
+clarity-cast-server/
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/claritycast/
+│       │       ├── config/
+│       │       │   └── WebSocketConfig.java         # WebSocket setup
+│       │       ├── handler/
+│       │       │   └── SignalingWebSocketHandler.java # Custom handler for signaling
+│       │       └── ClarityCastServerApplication.java
+│       └── resources/
+│           └── application.properties
+├── pom.xml
 └── README.md
